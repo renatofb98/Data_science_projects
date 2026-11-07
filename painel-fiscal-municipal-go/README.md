@@ -23,7 +23,7 @@ Projeto de portfólio: pipeline de dados (Python + SQL com DuckDB) e painel (Pow
 Python (coleta pela API) -> arquivos Parquet -> DuckDB (modelagem em SQL) -> Power BI (em desenvolvimento).
 
     src/siconfi.py      coleta (paginação, tentativas, retomada por lote)
-    src/build_db.py     executa os scripts sql/NN_*.sql in ordem
+    src/build_db.py     executa os scripts sql/NN_*.sql em ordem
     sql/                staging, dimensão de município e views
     sql/analises/       consultas analíticas (não fazem parte do build)
 
@@ -50,7 +50,7 @@ Os dados são autodeclarados pelos municípios. O projeto sinaliza, e não corri
 
 - **Situação em 2025 (246 municípios):** 167 regulares, 34 em alerta, 23 em prudencial, 19 acima do limite declarado e 3 a revisar. Em 2024 eram 191, 29, 15, 9 e 2.
 - **Quem piorou:** dos 19 acima do limite em 2025, 13 estavam regulares ou em alerta em 2024; só 1 já estava acima.
-- **Folha versus receita:** entre 18 municípios acima do limite in 2025 (excluindo um dado atípico), a despesa de pessoal subiu 25% ou mais em 13. Dois casos têm queda de RCL e merecem checagem contra o DCA.
+- **Folha versus receita:** entre 18 municípios acima do limite em 2025 (excluindo um dado atípico), a despesa de pessoal subiu 25% ou mais em 13. Dois casos têm queda de RCL e merecem checagem contra o DCA.
 - **Variação mediana anual (calculada antes de incluir os municípios do RGF simplificado):** 2023, RCL +8,9% e folha +13,5%; 2024, RCL +15,2% e folha +8,5%; 2025, RCL +10,9% e folha +14,5%.
 - **Reincidência:** 6 municípios ficaram acima do limite declarado em 2 ou mais anos.
 
