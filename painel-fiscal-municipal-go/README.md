@@ -37,6 +37,26 @@ Testado no Google Colab.
     # 3) montar o banco:
     #    from src.build_db import build; con = build(raw_dir="data/raw")
 
+## Modelo de dados
+
+Esquema em estrela, materializado em DuckDB pelos scripts `sql/30_*` a `sql/42_*`.
+
+```mermaid
+erDiagram
+  dim_municipio ||--o{ fato_pessoal : "cod_ibge"
+  dim_ano ||--o{ fato_pessoal : "exercicio"
+  dim_status ||--o{ fato_pessoal : "status_cod"
+  dim_municipio ||--o{ fato_receitas : "cod_ibge"
+  dim_ano ||--o{ fato_receitas : "exercicio"
+  dim_municipio ||--o{ fato_despesa_funcao : "cod_ibge"
+  dim_ano ||--o{ fato_despesa_funcao : "exercicio"
+  dim_funcao ||--o{ fato_despesa_funcao : "funcao_cod"
+```
+
+- `fato_pessoal`: despesa com pessoal, limites da LRF, validação contra o DCA e comparação com pares do mesmo porte (mediana e posição percentual, calculadas sem os casos a revisar).
+- `fato_receitas`: receitas por categoria, deduções e dependência de transferências.
+- `fato_despesa_funcao`: despesa empenhada, liquidada e paga por função de governo.
+
 ## Qualidade dos dados
 
 Os dados são autodeclarados pelos municípios. O projeto valida a RCL ajustada do RGF contra a receita do DCA (segunda fonte) e **sinaliza, sem corrigir nem excluir**, os casos atípicos.
